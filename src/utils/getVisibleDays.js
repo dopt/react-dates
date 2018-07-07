@@ -16,8 +16,8 @@ export default function getVisibleDays(
 
     // set utc offset to get correct dates in future (when timezone changes)
     const baseDate = currentMonth.clone();
-    const firstOfMonth = baseDate.clone().startOf('month').hour(12);
-    const lastOfMonth = baseDate.clone().endOf('month').hour(12);
+    const firstOfMonth = baseDate.clone().startOf('month');//.hour(12);
+    const lastOfMonth = baseDate.clone().endOf('month');//.hour(12);
 
     const currentDay = firstOfMonth.clone();
 

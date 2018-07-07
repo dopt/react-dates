@@ -15,7 +15,7 @@ import isSameDay from '../../src/utils/isSameDay';
 const describeIfWindow = typeof document === 'undefined' ? describe.skip : describe;
 
 // Set to noon to mimic how days in the picker are configured internally
-const today = moment().startOf('day').hours(12);
+const today = moment().startOf('day');//.hours(12);
 
 describe('SingleDatePicker', () => {
   afterEach(() => {

@@ -51,7 +51,8 @@ storiesOf('SDP - Input Props', module)
   .addWithInfo('with custom display format', () => (
     <SingleDatePickerWrapper
       initialDate={moment().add(3, 'days')}
-      displayFormat="MMM:DD HH:mm:ss"
+      //displayFormat="MMM:DD HH:mm:ss"
+      displayFormat="MM/DD/YYYY, HH:mm:ss"//"MMM:DD H:mm:ss"
     />
   ))
   .addWithInfo('with show calendar icon', () => (

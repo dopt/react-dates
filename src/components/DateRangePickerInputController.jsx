@@ -318,7 +318,7 @@ export default class DateRangePickerInputController extends React.Component {
         customCloseIcon={customCloseIcon}
         phrases={phrases}
         onStartDateChange={this.onStartDateChange}
-        onFocusChange={this.onStartDateChange}
+        //onFocusChange={this.onStartDateChange}
         onStartDateFocus={this.onStartDateFocus}
         onStartDateShiftTab={this.onClearFocus}
         onEndDateChange={this.onEndDateChange}

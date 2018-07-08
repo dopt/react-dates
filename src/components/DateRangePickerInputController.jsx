@@ -65,6 +65,7 @@ const propTypes = forbidExtraProps({
   onDatesChange: PropTypes.func,
   onKeyDownArrowDown: PropTypes.func,
   onKeyDownQuestionMark: PropTypes.func,
+  onKeyUpEnter: PropTypes.func,
 
   customInputIcon: PropTypes.node,
   customArrowIcon: PropTypes.node,
@@ -117,6 +118,7 @@ const defaultProps = {
   onDatesChange() {},
   onKeyDownArrowDown() {},
   onKeyDownQuestionMark() {},
+  onKeyUpEnter() {},
 
   customInputIcon: null,
   customArrowIcon: null,
@@ -140,7 +142,14 @@ export default class DateRangePickerInputController extends React.Component {
     this.onStartDateFocus = this.onStartDateFocus.bind(this);
     this.onEndDateChange = this.onEndDateChange.bind(this);
     this.onEndDateFocus = this.onEndDateFocus.bind(this);
+    this.onKeyUpEnter = this.onKeyUpEnter.bind(this);
     this.clearDates = this.clearDates.bind(this);
+  }
+
+  onKeyUpEnter(e){
+    if(e.keyCode == '13'){
+      this.onClearFocus();
+    }
   }
 
   onClearFocus() {
@@ -284,6 +293,7 @@ export default class DateRangePickerInputController extends React.Component {
       phrases,
       onKeyDownArrowDown,
       onKeyDownQuestionMark,
+      onKeyUpEnter,
       isRTL,
       noBorder,
       block,
@@ -319,11 +329,13 @@ export default class DateRangePickerInputController extends React.Component {
         phrases={phrases}
         onStartDateChange={this.onStartDateChange}
         //onFocusChange={this.onStartDateChange}
+        onKeyUp={this.onKeyUpEnter}
         onStartDateFocus={this.onStartDateFocus}
         onStartDateShiftTab={this.onClearFocus}
         onEndDateChange={this.onEndDateChange}
         onEndDateFocus={this.onEndDateFocus}
         onEndDateTab={this.onClearFocus}
+        onKeyUpEnter={this.onKeyUpEnter}
         showClearDates={showClearDates}
         onClearDates={this.clearDates}
         screenReaderMessage={screenReaderMessage}

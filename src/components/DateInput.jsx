@@ -47,6 +47,7 @@ const propTypes = forbidExtraProps({
 
   onKeyDownArrowDown: PropTypes.func,
   onKeyDownQuestionMark: PropTypes.func,
+  onKeyUp: PropTypes.func,
 
   // accessibility
   isFocused: PropTypes.bool, // describes actual DOM focus
@@ -75,6 +76,7 @@ const defaultProps = {
 
   onKeyDownArrowDown() {},
   onKeyDownQuestionMark() {},
+  onKeyUp() {},
 
   // accessibility
   isFocused: false,
@@ -129,9 +131,6 @@ class DateInput extends React.Component {
     } else {
       this.setState({ dateString }, () => onChange(dateString));
     }
-    //this.setState({ dateString }, () => onChange(dateString));
-    //this.setState({ dateString }, () => dateString);
-    //alert();
   }
 
   onKeyDown(e) {
@@ -161,7 +160,7 @@ class DateInput extends React.Component {
     } else if (key === '?') {
       e.preventDefault();
       onKeyDownQuestionMark(e);
-    }
+    } 
   }
 
   setInputRef(ref) {
@@ -181,6 +180,7 @@ class DateInput extends React.Component {
       focused,
       showCaret,
       onFocus,
+      onKeyUp,
       disabled,
       required,
       readOnly,
@@ -259,6 +259,7 @@ class DateInput extends React.Component {
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
           onFocus={onFocus}
+          onKeyUp={onKeyUp}
           placeholder={placeholder}
           autoComplete="off"
           disabled={disabled}

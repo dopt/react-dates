@@ -38,6 +38,7 @@ const propTypes = forbidExtraProps({
   small: PropTypes.bool,
   block: PropTypes.bool,
   regular: PropTypes.bool,
+  fullWidth: PropTypes.bool,
 
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
@@ -65,6 +66,7 @@ const defaultProps = {
   small: false,
   block: false,
   regular: false,
+  fullWidth: false,
 
   onChange() {},
   onFocus() {},
@@ -189,6 +191,7 @@ class DateInput extends React.Component {
       block,
       styles,
       theme: { reactDates },
+      fullWidth,
     } = this.props;
 
     const value = displayValue || dateString || '';
@@ -201,7 +204,8 @@ class DateInput extends React.Component {
     return (
       <div
         {...css(
-          styles.DateInput,
+          fullWidth?styles.DateInput_full:styles.DateInput,
+          //styles.DateInput,
           small && styles.DateInput__small,
           block && styles.DateInput__block,
           withFang && styles.DateInput__withFang,
@@ -312,10 +316,18 @@ export default withStyles(({
     background: color.background,
     position: 'relative',
     display: 'inline-block',
-    width: '47%',//sizing.inputWidth,
+    width: 'calc(50%-12px)',//sizing.inputWidth,
     verticalAlign: 'middle',
   },
-
+  DateInput_full: {
+    margin: 0,
+    padding: spacing.inputPadding,
+    background: color.background,
+    position: 'relative',
+    display: 'inline-block',
+    width: '100%',
+    verticalAlign: 'middle',
+  },
   DateInput__small: {
     width: sizing.inputWidth_small,
   },

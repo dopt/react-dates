@@ -15,6 +15,7 @@ import {
   DEFAULT_VERTICAL_SPACING,
   MODIFIER_KEY_NAMES,
 } from '../constants';
+import MaskedInput from 'react-maskedinput'
 
 const FANG_PATH_TOP = `M0,${FANG_HEIGHT_PX} ${FANG_WIDTH_PX},${FANG_HEIGHT_PX} ${FANG_WIDTH_PX / 2},0z`;
 const FANG_STROKE_TOP = `M0,${FANG_HEIGHT_PX} ${FANG_WIDTH_PX / 2},0 ${FANG_WIDTH_PX},${FANG_HEIGHT_PX}`;
@@ -117,7 +118,7 @@ class DateInput extends React.Component {
   onChange(e) {
     const { onChange, onKeyDownQuestionMark } = this.props;
     const dateString = e.target.value;
-
+    
     // In Safari, onKeyDown does not consistently fire ahead of onChange. As a result, we need to
     // special case the `?` key so that it always triggers the appropriate callback, instead of
     // modifying the input value
@@ -126,6 +127,9 @@ class DateInput extends React.Component {
     } else {
       this.setState({ dateString }, () => onChange(dateString));
     }
+    //this.setState({ dateString }, () => onChange(dateString));
+    //this.setState({ dateString }, () => dateString);
+    //alert();
   }
 
   onKeyDown(e) {
@@ -206,7 +210,34 @@ class DateInput extends React.Component {
           withFang && openDirection === OPEN_UP && styles.DateInput__openUp,
         )}
       >
-        <input
+        {/* <input
+          {...css(
+            styles.DateInput_input,
+            small && styles.DateInput_input__small,
+            regular && styles.DateInput_input__regular,
+            readOnly && styles.DateInput_input__readOnly,
+            focused && styles.DateInput_input__focused,
+            disabled && styles.DateInput_input__disabled,
+          )}
+          aria-label={placeholder}
+          type="text"
+          id={id}
+          name={id}
+          ref={this.setInputRef}
+          value={value}
+          onChange={this.onChange}
+          //onBlur={this.onChange}
+          onKeyDown={this.onKeyDown}
+          onFocus={onFocus}
+          placeholder={placeholder}
+          autoComplete="off"
+          disabled={disabled}
+          readOnly={typeof readOnly === 'boolean' ? readOnly : isTouch}
+          required={required}
+          aria-describedby={screenReaderMessage && screenReaderMessageId}
+        /> */}
+
+        <MaskedInput mask="11/11/1111, 11:11:11"//"1111 1111 1111 1111" 
           {...css(
             styles.DateInput_input,
             small && styles.DateInput_input__small,
@@ -281,7 +312,7 @@ export default withStyles(({
     background: color.background,
     position: 'relative',
     display: 'inline-block',
-    width: sizing.inputWidth,
+    width: '47%',//sizing.inputWidth,
     verticalAlign: 'middle',
   },
 

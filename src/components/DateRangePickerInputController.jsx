@@ -219,9 +219,9 @@ export default class DateRangePickerInputController extends React.Component {
       if (isEndDateBeforeStartDate) {
         endDate = null;
       }
-
+      // Stop jump when changes WIP
       onDatesChange({ startDate, endDate });
-      onFocusChange(END_DATE);
+      //onFocusChange(END_DATE);
     } else {
       onDatesChange({
         startDate: null,
@@ -318,6 +318,7 @@ export default class DateRangePickerInputController extends React.Component {
         customCloseIcon={customCloseIcon}
         phrases={phrases}
         onStartDateChange={this.onStartDateChange}
+        onFocusChange={this.onStartDateChange}
         onStartDateFocus={this.onStartDateFocus}
         onStartDateShiftTab={this.onClearFocus}
         onEndDateChange={this.onEndDateChange}

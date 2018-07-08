@@ -101,7 +101,7 @@ storiesOf('DRP - Input Props', module)
     <DateRangePickerWrapper
       initialStartDate={moment().add(3, 'days')}
       initialEndDate={moment().add(10, 'days')}
-      displayFormat="MMM:DD HH:mm:ss"
+      displayFormat="MM/DD/YYYY, HH:mm:ss"//"MMM:DD H:mm:ss"
     />
   ))
   .addWithInfo('with show calendar icon', () => (

@@ -335,7 +335,7 @@ export default class DateRangePickerInputController extends React.Component {
         onEndDateChange={this.onEndDateChange}
         onEndDateFocus={this.onEndDateFocus}
         onEndDateTab={this.onClearFocus}
-        onKeyUpEnter={this.onKeyUpEnter}
+        onKeyUp={this.onKeyUpEnter}
         showClearDates={showClearDates}
         onClearDates={this.clearDates}
         screenReaderMessage={screenReaderMessage}
